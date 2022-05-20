@@ -1,9 +1,14 @@
 # fishdle
+## Backstory
+"fishdle" is basically the famous New York Times "Wordle". But, instead of using everyday words, fishdle uses names of fish! 
 
-## Premise
+## How to play! 
+* 
+* 
 
-## User Story
-
-## Technologies Used
+## Tools used
+* HTML5
+* CSS
+* Vanilla JS
 
 ## Wireframes
