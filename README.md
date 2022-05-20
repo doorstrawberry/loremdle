@@ -5,7 +5,7 @@
 ## How to play! 
 * User enters a five or six letter word, preferebly a name of a fish followed by an "enter" or "return" via a keyboard
   * The length of your guessed word depends on the length of the hidden word 
-* If the word provided is a valid fish name you will recieve the following feedback:
+* If the word provided is valid you will recieve the following feedback:
   * Black Tile: Letter is not in the word
   * Yellow Tile: Letter is in the word but not in the right position
   * Green Tile: Letter is in the word and in the right position
