@@ -1,1 +1,1 @@
-# loremdle
+# Wordle
