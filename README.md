@@ -13,7 +13,7 @@
 
 ## What I want for 🫵
 * An "OH YEAH!" in your deepest voice when you guess the word correctly
-* A mind-bending, orgasmic and life-changing experience enough to start a mid-life crisis after every guess 
+* A mind-bending and life-changing experience enough to start a mid-life crisis after every guess 
 * You can also google if you don't know any fish. But you get a "tsk tsk" from mama. 
 
 ## Tools used
