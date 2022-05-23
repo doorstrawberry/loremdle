@@ -1,14 +1,14 @@
-// Choosing a missingLorem
-let missingLorem = 'Lorem'
+// Filtering the lorem ipsum placer text to only 5 letter words 
+let validWords = ['lorem', 'ipsum', 'mordo', 'frodo', 'baggi']
 
-// Storing player's guesses 
-let guessedWords = [[], [], [], [], []]
+// Choosing a missingLorem
+let missingLorem = 'lorem'
 
 // Represents a current tile
 let currentTile = 0
 
 // Represents how many letters you have typed in your guess
-let currentLetterIn = 1
+let currentLetterIn = 0
 
 // List of all the tiles on the board
 let tilesList = document.getElementsByClassName('tile')
@@ -24,11 +24,17 @@ function addLetter(e) {
             removeLetter()
         }
     }
-    else if (currentLetterIn <= 5) {
-        if (keyPress === "Enter") {
-            checkGuess()
+    else if (keyPress === "Enter") {
+        if (currentLetterIn === 5) {
+            let word = getWord()
+            console.log(word) 
         }
-        else if (inAlphabetHuh(keyPress)) {
+        else {
+            return
+        }
+    }
+    else if (currentLetterIn < 5) {
+        if (inAlphabetHuh(keyPress)) {
             insertLetter(keyPress)
         }
         else {
@@ -40,11 +46,20 @@ function addLetter(e) {
     }
 }
 
+// Gets the five letter word
+function getWord(){
+    let guess = ''
+    for (let i = currentTile - currentLetterIn; i < currentTile; i++){
+        guess += `${tilesList[i].children[0].innerText}`
+    }
+    return guess
+}
+
 // Removes the appropriate letter from the tile
 function removeLetter() {
     currentTile -= 1
-    tilesList[currentTile].children[0].remove()
     currentLetterIn -= 1 // Updating the number of letters in a single guess
+    tilesList[currentTile].children[0].remove()
 }
 
 // Inserts a letter into the appropriate tile
