@@ -4,21 +4,36 @@ let missingLorem = 'Lorem'
 // Storing player's guesses 
 let guessedWords = [[], [], [], [], []]
 
-// Current tile
+// Represents a current tile
 let currentTile = 0
 
-// Allowing user to type a letter
-document.addEventListener("keydown", addLetter)
+// Allowing user to type a letter via a physical keyboard
+document.addEventListener('keydown', addLetter)
 function addLetter(e) {
-    let tilesList = document.getElementsByClassName('tile')
-    let character = String(e.key)
-
-    let letterContainer = document.createElement('div') // Where the letter is going to sit
-    letterContainer.classList.add('letter') // Adding letter styles to the container
-    letterContainer.innerText = character // Adding the guessed letter to the container
-    tilesList[currentTile].appendChild(letterContainer) // Determining which tile the container should append to
-    currentTile += 1 // Updating the current tile
+    let keyPress = String(e.key)
+    if (keyPress === 'Backspace'){
+        removeLetter()
+    }
+    else if (keyPress === "Enter") {
+        checkGuess()
+    }
+    else if (inAlphabetHuh(keyPress)) {
+        insertLetter()
+    }
+    else {
+        return
+    }
 }
 
 
-
+// Helper Functions
+// Checks if the given letter is in the alphabet
+function inAlphabetHuh(letter){
+    let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'] // Allowed characters
+    for (let i = 0; i < alphabet.length; i++){
+        if (letter === alphabet[i]) {
+            return true
+        }
+    }
+    return false
+}
