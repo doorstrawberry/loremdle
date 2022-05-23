@@ -9,7 +9,7 @@
   * Black Tile: Letter is not in the word
   * Yellow Tile: Letter is in the word but not in the right position
   * Green Tile: Letter is in the word and in the right position
-* A word is valid if it is 5 letter latin word.
+* A word is valid if it is 5 letter word within one million words of lorem ipsum placer text
 * You have six attempts to find the "_missing lorem_"
 
 ## What I want for 🫵

@@ -9,6 +9,8 @@ body {
 #title {
     text-align: center;
     margin-bottom: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.3vw;
 }
 
 /* Main Content Styles */
@@ -50,7 +52,7 @@ body {
 }
 
 .keyboard button {
-    border-radius: 7%;
+    border-radius: 5%;
     border: 0.75px solid #c9c9ca;
     padding: 17px;
 }
@@ -89,10 +91,6 @@ I've decided to hard code the pixels instead of making it based off of percentag
         width: 290px;
         height: 60px;
     }
-    .tile {
-        width: 50px;
-        height: 50px;
-    }
 
     .keyboard{
         width: 390px;
@@ -101,4 +99,15 @@ I've decided to hard code the pixels instead of making it based off of percentag
     .keyboard button {
         padding: 8px;
     }
+}
+
+
+/* Supplemental Styles */
+.letter {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 5%;
+    font-size: 40px;
+    opacity: 65%;
 }
