@@ -1,0 +1,104 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f3;
+}
+
+/* Title Styles */
+#title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Main Content Styles */
+.flex-container {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+/* Game Board Styles */
+#gameboard {
+    align-self: center;
+    margin-bottom: 60px;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    width: 300px;
+    height: 60px;
+}
+
+.tile {
+    border: 0.75px solid #7193a4;
+    width: 50px;
+    height: 50px;
+}
+
+/* KeyBoard Styles */
+.keyboard{
+    width: 550px;
+}
+
+.keyboard-row {
+    text-align: center;
+    margin: 5px;
+}
+
+.keyboard button {
+    border-radius: 7%;
+    border: 0.75px solid #c9c9ca;
+    padding: 17px;
+}
+
+.keyboard button:hover {
+    opacity: 50%;
+}
+
+/* Styles to make it responsive */
+/* 
+I've decided to hard code the pixels instead of making it based off of percentages of the screen width because I wanted my gameboard to a be a fixed width regardless of the screen width or not. 
+*/
+/* Screen Aside */
+@media screen and (max-width: 530px) {
+    #grid-container {
+        width: 290px;
+        height: 60px;
+    }
+    .tile {
+        width: 50px;
+        height: 50px;
+    }
+
+    .keyboard{
+        width: 500px;
+    }
+
+    .keyboard button {
+        padding: 12px;
+    }
+}
+
+/* Most Phones */
+@media screen and (max-width: 450px) {
+    #grid-container {
+        width: 290px;
+        height: 60px;
+    }
+    .tile {
+        width: 50px;
+        height: 50px;
+    }
+
+    .keyboard{
+        width: 390px;
+    }
+
+    .keyboard button {
+        padding: 8px;
+    }
+}
