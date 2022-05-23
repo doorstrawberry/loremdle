@@ -7,6 +7,9 @@ let guessedWords = [[], [], [], [], []]
 // Represents a current tile
 let currentTile = 0
 
+// List of all the tiles on the board
+let tilesList = document.getElementsByClassName('tile')
+
 // Allowing user to type a letter via a physical keyboard
 document.addEventListener('keydown', addLetter)
 function addLetter(e) {
@@ -18,11 +21,20 @@ function addLetter(e) {
         checkGuess()
     }
     else if (inAlphabetHuh(keyPress)) {
-        insertLetter()
+        insertLetter(keyPress)
     }
     else {
         return
     }
+}
+
+// Inserts a letter into the appropriate tile
+function insertLetter(letter){
+    let letterContainer = document.createElement('div') // Creating a letter container
+    letterContainer.classList.add('letter') // Styling the letter
+    letterContainer.innerText = letter // Inserting the letter 
+    tilesList[currentTile].appendChild(letterContainer) // Appending the container to the tile
+    currentTile += 1 // Updating current tile
 }
 
 
