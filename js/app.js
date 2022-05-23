@@ -30,7 +30,18 @@ function addLetter(e) {
     else if (keyPress === "Enter") {
         if (currentLetterIn === 5) {
             let word = getWord()
-            console.log(word)
+            if (validWordHuh(word)) {
+                if (word === missingLorem) {
+                    document.removeEventListener('keydown', addLetter)
+                    winStyle()
+                }
+                else {
+                    pass // Write code 
+                }
+            }
+            else {
+                pass // Write code 
+            }
         }
         else {
             return
@@ -47,6 +58,23 @@ function addLetter(e) {
     else {
         return
     }
+}
+
+// Input winning animation
+function winStyle(){
+    for (let i = currentTile - currentLetterIn; i < currentTile; i++){
+        tilesList[i].style.background = "green"
+    }
+}
+
+// Checks if a word is valid, returns true if it is
+function validWordHuh(word){
+    for (let i = 0; i < validWords.length; i++){
+        if (word === validWords[i]){
+            return true
+        }
+    }
+    return false
 }
 
 // Gets the five letter word
