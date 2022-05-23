@@ -1,6 +1,6 @@
 # loremdle
 ## Backstory
-"loremdle" is basically the famous New York Times "Wordle". But, instead of using everyday words, loremdle uses words from the famouse placer text "lorem ipsum"! Of course, for those who don't play wordle, your overarching goal is to find the hidden word through guessing and logic!
+"loremdle" is basically the famous New York Times "Wordle". But, instead of using everyday words, loremdle uses words from the placer text generator "lorem ipsum"! Of course, for those who don't play wordle, your overarching goal is to find the hidden word through guessing and logic!
 
 ## How to play! 
 * User enters a five letter word, followed by an "enter" or "return" via a keyboard
