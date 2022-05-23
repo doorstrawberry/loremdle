@@ -7,8 +7,11 @@ let missingLorem = 'lorem'
 // Represents a current tile
 let currentTile = 0
 
-// Represents how many letters you have typed in your guess
+// Represents how many letters you have typed in your guess. This variable will back to 0 once entered
 let currentLetterIn = 0
+
+// Guesses Made 
+let guessesMade = 0
 
 // List of all the tiles on the board
 let tilesList = document.getElementsByClassName('tile')
@@ -27,7 +30,7 @@ function addLetter(e) {
     else if (keyPress === "Enter") {
         if (currentLetterIn === 5) {
             let word = getWord()
-            console.log(word) 
+            console.log(word)
         }
         else {
             return
