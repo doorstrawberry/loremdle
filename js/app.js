@@ -15,7 +15,11 @@ document.addEventListener('keydown', addLetter)
 function addLetter(e) {
     let keyPress = String(e.key)
     if (keyPress === 'Backspace'){
-        removeLetter()
+        if (currentTile <= 0){
+            return
+        } else {
+            removeLetter()
+        }
     }
     else if (keyPress === "Enter") {
         checkGuess()
@@ -26,6 +30,12 @@ function addLetter(e) {
     else {
         return
     }
+}
+
+// Removes the appropriate letter from the tile
+function removeLetter() {
+    currentTile -= 1
+    tilesList[currentTile].children[0].remove()
 }
 
 // Inserts a letter into the appropriate tile
