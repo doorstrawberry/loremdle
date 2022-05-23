@@ -20,3 +20,6 @@
 * HTML5
 * CSS
 * Vanilla JS
+
+## A Single Wireframe
+![loremdle](https://user-images.githubusercontent.com/104126976/169827204-7e45c9d1-d5a4-4466-8d37-7c8f524878c9.jpeg)
