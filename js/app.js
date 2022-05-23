@@ -7,6 +7,9 @@ let guessedWords = [[], [], [], [], []]
 // Represents a current tile
 let currentTile = 0
 
+// Represents how many letters you have typed in your guess
+let currentLetterIn = 1
+
 // List of all the tiles on the board
 let tilesList = document.getElementsByClassName('tile')
 
@@ -21,11 +24,16 @@ function addLetter(e) {
             removeLetter()
         }
     }
-    else if (keyPress === "Enter") {
-        checkGuess()
-    }
-    else if (inAlphabetHuh(keyPress)) {
-        insertLetter(keyPress)
+    else if (currentLetterIn <= 5) {
+        if (keyPress === "Enter") {
+            checkGuess()
+        }
+        else if (inAlphabetHuh(keyPress)) {
+            insertLetter(keyPress)
+        }
+        else {
+            return
+        }
     }
     else {
         return
@@ -36,6 +44,7 @@ function addLetter(e) {
 function removeLetter() {
     currentTile -= 1
     tilesList[currentTile].children[0].remove()
+    currentLetterIn -= 1 // Updating the number of letters in a single guess
 }
 
 // Inserts a letter into the appropriate tile
@@ -45,6 +54,7 @@ function insertLetter(letter){
     letterContainer.innerText = letter // Inserting the letter 
     tilesList[currentTile].appendChild(letterContainer) // Appending the container to the tile
     currentTile += 1 // Updating current tile
+    currentLetterIn += 1 // Updating the number of letters in a single guess
 }
 
 
