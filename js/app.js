@@ -1,5 +1,7 @@
+// -----------------------------
+// Creating the gameboard!
+// -----------------------------
 document.addEventListener('DOMContentLoaded', () => {
-    
     // Creating the squares on the board
     createGameboard()
     function createGameboard() {
@@ -11,12 +13,35 @@ document.addEventListener('DOMContentLoaded', () => {
             gameboard.appendChild(square)
         }
     }
-
 })
 
+// -----------------------------
+// Declaring Global Variables
+// -----------------------------
 
+// List of all the tiles on the board
+let tilesList = document.getElementsByClassName('tile')
 
+// Represnts how many letters left for our guess
+let lettersLeft = 5
+
+// Represents which guess we are on
+let guessOn = 1
+
+// Represents the current tile we are on
+let currentTile = 0
+
+// List of our guesses made
+let guessesList = []
+
+// Represent our current guess
+let guess = ''
+
+// -----------------------------
+// Handles every keys pressed
+// -----------------------------
 document.addEventListener('keydown', handleKeyPress)
+
 
 function handleKeyPress(e){
     let keyPressed = String(e.key)
@@ -27,11 +52,27 @@ function handleKeyPress(e){
         console.log(keyPressed)
     }
     else if (inAlphabetHuh(keyPressed)) {
-        console.log(true)
+        if (lettersLeft > 0){
+            insertLetter(keyPressed)
+            lettersLeft -= 1
+            currentTile += 1
+            guess += keyPressed
+        }
+        else {
+            return 
+        }
     }
     else {
         return
     }
+}
+
+// Inserts a letter into the appropriate tile
+function insertLetter(letter){
+    let letterContainer = document.createElement('div') // Creating a letter container
+    letterContainer.classList.add('letter') // Styling the letter
+    letterContainer.innerText = letter // Inserting the letter 
+    tilesList[currentTile].appendChild(letterContainer) // Appending the container to the tile
 }
 
 
@@ -63,9 +104,6 @@ function inAlphabetHuh(letter){
 
 // // Guesses Made 
 // let whichGuess = 1
-
-// // List of all the tiles on the board
-// let tilesList = document.getElementsByClassName('tile')
 
 // // Allowing user to type a letter via a physical keyboard
 // document.addEventListener('keydown', addLetter)
@@ -160,14 +198,4 @@ function inAlphabetHuh(letter){
 //     currentTile -= 1
 //     currentLetterIn -= 1 // Updating the number of letters in a single guess
 //     tilesList[currentTile].children[0].remove()
-// }
-
-// // Inserts a letter into the appropriate tile
-// function insertLetter(letter){
-//     let letterContainer = document.createElement('div') // Creating a letter container
-//     letterContainer.classList.add('letter') // Styling the letter
-//     letterContainer.innerText = letter // Inserting the letter 
-//     tilesList[currentTile].appendChild(letterContainer) // Appending the container to the tile
-//     currentTile += 1 // Updating current tile
-//     currentLetterIn += 1 // Updating the number of letters in a single guess
 // }
