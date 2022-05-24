@@ -51,7 +51,6 @@ let guess = ''
 // -----------------------------
 document.addEventListener('keydown', handleKeyPress)
 
-
 function handleKeyPress(e) {
     let keyPressed = String(e.key)
     if (keyPressed === "Enter") {
@@ -64,6 +63,9 @@ function handleKeyPress(e) {
                     document.removeEventListener('keydown', handleKeyPress)
                 }
                 else {
+                    for (let i = 0; i < 5; i++) {
+                        tilesList[(currentTile - 5) + i].style.background = "gray"
+                    }
                     compareWords(guess, missingLorem)
                     guessesList.push(guess)
                     guess = ''
@@ -89,7 +91,7 @@ function handleKeyPress(e) {
         currentTile -= 1
         lettersLeft += 1
     }
-    else if (inAlphabetHuh(keyPressed)) {
+    else if ((inAlphabetHuh(keyPressed))) {
         if (lettersLeft > 0) {
             insertLetter(keyPressed)
             lettersLeft -= 1
