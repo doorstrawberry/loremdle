@@ -57,10 +57,19 @@ function handleKeyPress(e) {
     if (keyPressed === "Enter") {
         if (lettersLeft === 0) {
             if (validWordHuh(guess)) {
-                guessesList.push(guess)
-                guess = ''
-                guessOn += 1
-                lettersLeft = 5
+                if (checkWin(guess, missingLorem)) {
+                    for (let i = 0; i < 5; i++) {
+                        tilesList[(currentTile - 5) + i].style.background = "green"
+                    }
+                    document.removeEventListener('keydown', handleKeyPress)
+                }
+                else {
+                    compareWords(guess, missingLorem)
+                    guessesList.push(guess)
+                    guess = ''
+                    guessOn += 1
+                    lettersLeft = 5
+                }
             }
             else {
                 notValid()
@@ -110,20 +119,28 @@ function removeLetter() {
 }
 
 // Compares how similar the given word is to the missing lorem
-// function compareWords(word, missingLorem){
-//     for (let i = 0; i < 5; i++){
-//         for (let j = 0; j < 5; j++){
-//             if (word[i] === missingLorem[j]){
-//                 if (i === j){
-//                     tilesList[i*whichGuess].style.background = "green"
-//                 }
-//                 else {
-//                     tilesList[i*whichGuess].style.background = "yellow"
-//                 }
-//             }
-//         }
-//     }
-// }
+function compareWords(word, missingLorem) {
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            if (word[i] === missingLorem[j]) {
+                if (i === j) {
+                    tilesList[(currentTile - 5) + i].style.background = "green"
+                }
+                else {
+                    tilesList[(currentTile - 5) + i].style.background = "yellow"
+                }
+            }
+        }
+    }
+}
+
+// Checks if the guess is the given word!
+function checkWin(word, missingLorem) {
+    if (word === missingLorem) {
+        return true
+    }
+    else false
+}
 
 
 // -----------------------------
@@ -151,7 +168,7 @@ function validWordHuh(word) {
 }
 
 // Displays not a valid word message
-function notValid(){
+function notValid() {
     let notValidMessage = document.createElement('div')
     notValidMessage.classList.add('not-valid')
     notValidMessage.innerText = `Not a valid "lorem ipsum" word`
@@ -159,7 +176,7 @@ function notValid(){
 }
 
 // Removes the notValid message
-function removeNotValid(){
+function removeNotValid() {
     let m = document.getElementsByClassName('not-valid')
     m[0].remove('div')
 }
