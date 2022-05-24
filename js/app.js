@@ -49,7 +49,13 @@ function handleKeyPress(e){
         console.log(keyPressed)
     }
     else if (keyPressed === "Backspace"){
-        console.log(keyPressed)
+        if (lettersLeft === 5) {
+            return
+        }
+        removeLetter()
+        guess = guess.replace(guess[guess.length - 1], '')
+        currentTile -= 1
+        lettersLeft += 1
     }
     else if (inAlphabetHuh(keyPressed)) {
         if (lettersLeft > 0){
@@ -73,6 +79,11 @@ function insertLetter(letter){
     letterContainer.classList.add('letter') // Styling the letter
     letterContainer.innerText = letter // Inserting the letter 
     tilesList[currentTile].appendChild(letterContainer) // Appending the container to the tile
+}
+
+// // Removes the appropriate letter from the tile
+function removeLetter() {
+    tilesList[currentTile - 1].children[0].remove('div')
 }
 
 
@@ -191,11 +202,4 @@ function inAlphabetHuh(letter){
 //         guess += `${tilesList[i].children[0].innerText}`
 //     }
 //     return guess
-// }
-
-// // Removes the appropriate letter from the tile
-// function removeLetter() {
-//     currentTile -= 1
-//     currentLetterIn -= 1 // Updating the number of letters in a single guess
-//     tilesList[currentTile].children[0].remove()
 // }
