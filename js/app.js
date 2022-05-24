@@ -2,7 +2,7 @@
 // Making sure everything is set
 // -----------------------------
 // List of valid words
-let validWordsList = ['lorem', 'ipsum', 'frodo', 'baggi', 'mordo', 'ponyo']
+let validWords = ['lorem', 'ipsum', 'frodo', 'baggi', 'mordo', 'looem', 'ponyo']
 
 // Setting the missing lorem
 let missingLorem = 'lorem'
@@ -121,11 +121,12 @@ function removeLetter() {
 }
 
 // Compares how similar the given word is to the missing lorem
+// FIX THIS!
 function compareWords(word, missingLorem) {
     for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 5; j++) {
+        for (let j = 0; j < 5; j++){
             if (word[i] === missingLorem[j]) {
-                if (i === j) {
+                if (i === j){
                     tilesList[(currentTile - 5) + i].style.background = "green"
                 }
                 else {
@@ -161,8 +162,8 @@ function inAlphabetHuh(letter) {
 
 // Checks if a word is valid, returns true if it is
 function validWordHuh(word) {
-    for (let i = 0; i < validWordsList.length; i++) {
-        if (word === validWordsList[i]) {
+    for (let i = 0; i < validWords.length; i++) {
+        if (word === validWords[i]) {
             return true
         }
     }
