@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // -----------------------------
-// Making sure everything is set
+// Preprocessing Text File
 // -----------------------------
-// List of valid words
 let validWords = []
+let missingLorem = '' 
 fetch('lorem.txt')
     .then((response) => response.text())
     .then((data) => {
@@ -32,13 +32,11 @@ fetch('lorem.txt')
         temp = data.split(' ')
         for (let j = 0; j < temp.length; j++) {
             if (temp[j].length === 5) {
-                validWords.push(temp[j].toLowerCase())
+                validWords.push(temp[j].toLowerCase()) // List of valid words
             }
         }
+        missingLorem = validWords[Math.floor(Math.random() * validWords.length)] // Choosing a random word
     })
-
-// Setting the missing lorem
-let missingLorem = 'lorem'
 
 // -----------------------------
 // Declaring Global Variables
