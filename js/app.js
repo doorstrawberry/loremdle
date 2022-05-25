@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Preprocessing Text File
 // -----------------------------
 let validWords = []
-let missingLorem = '' 
+let missingLorem = ''
 fetch('lorem.txt')
     .then((response) => response.text())
     .then((data) => {
@@ -73,7 +73,7 @@ for (let i = 0; i < keyboardTiles.length; i++) {
 // -----------------------------
 // Handles every keys pressed
 // -----------------------------
-document.addEventListener('keydown', (e) => {
+document.addEventListener('keyup', (e) => {
     let pressed = String(e.key)
     main(pressed)
 })
@@ -89,7 +89,7 @@ function main(keyPressed) {
                     for (let j = 0; j < tilesList.length; j++) {
                         tilesList[j].style.opacity = "50%"
                     }
-                    document.removeEventListener('keydown', main)
+                    document.removeEventListener('keyup', main)
                     let keyboardTiles = document.querySelectorAll('button')
                     for (let i = 0; i < keyboardTiles.length; i++) {
                         keyboardTiles[i].removeEventListener('click', (e) => {
@@ -172,13 +172,13 @@ function compareWords(word, missingLorem) {
             greenList.push(word[i])
         }
     }
-    for (let g = 0; g < greenList.length; g++){
+    for (let g = 0; g < greenList.length; g++) {
         let idName = greenList[g]
         let temp = document.getElementById(idName)
         temp.style.background = "green"
     }
 
-    let yellowList =[]
+    let yellowList = []
     for (let j = 0; j < 5; j++) {
         if ((remainingLetters.includes(word[j])) && (word[j] !== missingLorem[j])) {
             remainingLetters = remainingLetters.replace(word[j], '')
@@ -186,7 +186,7 @@ function compareWords(word, missingLorem) {
             yellowList.push(word[j])
         }
     }
-    for (let y = 0; y < yellowList.length; y++){
+    for (let y = 0; y < yellowList.length; y++) {
         let idName = yellowList[y]
         let temp = document.getElementById(idName)
         temp.style.background = "yellow"
@@ -199,6 +199,23 @@ function checkWin(word, missingLorem) {
         return true
     }
     else false
+}
+
+// -----------------------------
+// Word Suggestion Generator
+// -----------------------------
+document.getElementById("suggestions").addEventListener('click', suggestionGenerator)
+
+function suggestionGenerator() {
+    let s = document.createElement('div')
+    s.classList.add("suggestions-message")
+    let randomSuggestion = validWords[Math.floor(Math.random() * validWords.length)]
+    if (randomSuggestion === missingLorem) {
+        randomSuggestion = validWords[Math.floor(Math.random() * validWords.length)]
+    }
+    s.innerText = randomSuggestion
+    document.querySelector('body').appendChild(s)
+    setTimeout(removeSuggestion, 1500)
 }
 
 
@@ -274,7 +291,7 @@ function displayLostMessage() {
 }
 
 // Displays a "Not enough letters" message
-function notEnough(){
+function notEnough() {
     let m = document.createElement("div")
     m.classList.add('not-enough')
     m.innerText = `Not enough letters`
@@ -285,4 +302,10 @@ function notEnough(){
 function removeNotEnough() {
     let m = document.getElementsByClassName('not-enough')
     m[0].remove('div')
+}
+
+// Removes suggestion message
+function removeSuggestion() {
+    let c = document.getElementsByClassName('suggestions-message')
+    c[0].remove('div')
 }
