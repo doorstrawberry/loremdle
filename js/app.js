@@ -2,7 +2,23 @@
 // Making sure everything is set
 // -----------------------------
 // List of valid words
-let validWords = ['lorem', 'ipsum', 'frodo', 'baggi', 'mordo', 'looem', 'ponyo']
+let validWords = []
+fetch('lorem.txt')
+    .then((response) => response.text())
+    .then((data) => {
+        let temp = []
+        for (let i = 0; i < data.length; i++) {
+            if ((data[i] === ',') || (data[i] === '.') || (data[i] === '!') || (data[i] === '?')) {
+                data = data.replace(data[i], '')
+            }
+        }
+        temp = data.split(' ')
+        for (let j = 0; j < temp.length; j++) {
+            if (temp[j].length === 5) {
+                validWords.push(temp[j].toLowerCase())
+            }
+        }
+    })
 
 // Setting the missing lorem
 let missingLorem = 'lorem'
