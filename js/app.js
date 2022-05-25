@@ -206,7 +206,7 @@ function checkWin(word, missingLorem) {
 // -----------------------------
 document.getElementById("suggestions").addEventListener('click', suggestionGenerator)
 
-function suggestionGenerator() {
+function suggestionGenerator(e) {
     let s = document.createElement('div')
     s.classList.add("suggestions-message")
     let randomSuggestion = validWords[Math.floor(Math.random() * validWords.length)]
