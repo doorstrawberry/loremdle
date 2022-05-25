@@ -262,7 +262,7 @@ function displayWinMessage() {
     else if (guessOn === 6) {
         w.innerText = `Phew~ you got it`
     }
-    document.querySelector('body').appendChild(w)
+    document.getElementById('gameboard').appendChild(w)
 }
 
 // Displays a loss message
