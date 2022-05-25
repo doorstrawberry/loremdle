@@ -60,7 +60,11 @@ function handleKeyPress(e) {
                     for (let i = 0; i < 5; i++) {
                         tilesList[(currentTile - 5) + i].style.background = "green"
                     }
+                    for (let j = 0; j < tilesList.length; j++){
+                        tilesList[j].style.opacity = "50%"
+                    }
                     document.removeEventListener('keydown', handleKeyPress)
+                    displayWinMessage()
                 }
                 else {
                     for (let i = 0; i < 5; i++) {
@@ -71,6 +75,9 @@ function handleKeyPress(e) {
                     guess = ''
                     guessOn += 1
                     lettersLeft = 5
+                    if (guessOn === 7){
+                        displayLostMessage()
+                    }
                 }
             }
             else {
@@ -182,4 +189,37 @@ function notValid() {
 function removeNotValid() {
     let m = document.getElementsByClassName('not-valid')
     m[0].remove('div')
+}
+
+// Displays a winning message
+function displayWinMessage(){
+    let w = document.createElement("div")
+    w.classList.add('win-message')
+    if (guessOn === 1){
+        w.innerText = `Lorem Einstein!`
+    }
+    else if (guessOn === 2){
+        w.innerText = `Genius!`
+    }
+    else if (guessOn === 3){
+        w.innerText = `Impressive!`
+    }
+    else if (guessOn === 4){
+        w.innerText = `Not too bad!`
+    }
+    else if (guessOn === 5){
+        w.innerText = `Yessz!`
+    }
+    else if (guessOn === 6){
+        w.innerText = `Phew~ you got it`
+    }
+    document.querySelector('body').appendChild(w)
+}
+
+// Displays a loss message
+function displayLostMessage(){
+    let w = document.createElement("div")
+    w.classList.add('lost-message')
+    w.innerText = `Better luck next time! The word was "${missingLorem}"`
+    document.querySelector('body').appendChild(w)
 }

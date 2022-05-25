@@ -58,6 +58,25 @@ body {
     margin-top: 20px;
 }
 
+/* SUPPLEMENTAL: win message */
+.win-message {
+    color: green;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.3vw;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* SUPPLEMENTAL: lost message */
+.lost-message {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.3vw;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
 /* Keyboard Styles */
 .keyboard {
     display: flex;
