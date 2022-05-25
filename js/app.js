@@ -278,7 +278,7 @@ function notEnough(){
     let m = document.createElement("div")
     m.classList.add('not-enough')
     m.innerText = `Not enough letters`
-    document.querySelector('body').appendChild(m)
+    document.getElementById('gameboard').appendChild(m)
 }
 
 // Removes the notEnough message
