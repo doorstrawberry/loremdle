@@ -110,6 +110,9 @@ function main(keyPressed) {
                     lettersLeft = 5
                     if (guessOn === 7) {
                         displayLostMessage()
+                        for (let j = 0; j < tilesList.length; j++) {
+                            tilesList[j].style.opacity = "50%"
+                        }
                     }
                 }
             }
