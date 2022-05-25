@@ -66,7 +66,7 @@ let guess = ''
 let keyboardTiles = document.querySelectorAll('button')
 for (let i = 0; i < keyboardTiles.length; i++) {
     keyboardTiles[i].addEventListener('click', (e) => {
-        let pressed = e.target.innerText
+        let pressed = e.target.id
         main(pressed)
     })
 }
@@ -119,7 +119,8 @@ function main(keyPressed) {
             }
         }
         else {
-            return
+            notEnough()
+            setTimeout(removeNotEnough, 1500)
         }
     }
     else if (keyPressed === "Backspace") {
@@ -255,4 +256,18 @@ function displayLostMessage() {
     w.classList.add('lost-message')
     w.innerText = `Better luck next time! The word was "${missingLorem}"`
     document.querySelector('body').appendChild(w)
+}
+
+// Displays a "Not enough letters" message
+function notEnough(){
+    let m = document.createElement("div")
+    m.classList.add('not-enough')
+    m.innerText = `Not enough letters`
+    document.querySelector('body').appendChild(m)
+}
+
+// Removes the notEnough message
+function removeNotEnough() {
+    let m = document.getElementsByClassName('not-enough')
+    m[0].remove('div')
 }
