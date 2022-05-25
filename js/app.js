@@ -1,4 +1,21 @@
 // -----------------------------
+// Creating the gameboard!
+// -----------------------------
+document.addEventListener('DOMContentLoaded', () => {
+    // Creating the squares on the board
+    createGameboard()
+    function createGameboard() {
+        const gameboard = document.getElementById('gameboard')
+        for (let i = 0; i < 30; i++) {
+            let square = document.createElement('div')
+            square.id = i + 1
+            square.classList.add('tile')
+            gameboard.appendChild(square)
+        }
+    }
+})
+
+// -----------------------------
 // Making sure everything is set
 // -----------------------------
 // List of valid words
@@ -22,23 +39,6 @@ fetch('lorem.txt')
 
 // Setting the missing lorem
 let missingLorem = 'lorem'
-
-// -----------------------------
-// Creating the gameboard!
-// -----------------------------
-document.addEventListener('DOMContentLoaded', () => {
-    // Creating the squares on the board
-    createGameboard()
-    function createGameboard() {
-        const gameboard = document.getElementById('gameboard')
-        for (let i = 0; i < 30; i++) {
-            let square = document.createElement('div')
-            square.id = i + 1
-            square.classList.add('tile')
-            gameboard.appendChild(square)
-        }
-    }
-})
 
 // -----------------------------
 // Declaring Global Variables
