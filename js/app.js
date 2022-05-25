@@ -231,7 +231,7 @@ function notValid() {
     let notValidMessage = document.createElement('div')
     notValidMessage.classList.add('not-valid')
     notValidMessage.innerText = `Not a valid "lorem ipsum" word`
-    document.querySelector('body').appendChild(notValidMessage)
+    document.getElementById('gameboard').appendChild(notValidMessage)
 }
 
 // Removes the notValid message
