@@ -9,13 +9,15 @@
   * Black Tile: Letter is not in the word
   * Yellow Tile: Letter is in the word but not in the right position
   * Green Tile: Letter is in the word and in the right position
-* A word is valid if it is 5 letter word within one million words of lorem ipsum placer text
+* A word is valid if it is 5 letter word within one hundred thousand words of lorem ipsum placer text
+  * This means that you can't use regular English words! If you were able to do so, it would be no fun.
 * You have six attempts to find the "_missing lorem_"
 
 ## What I want for 🫵
 * An "OH YEAH!" in your deepest voice when you guess the word correctly
 * A mind-bending and life-changing experience enough to start a mid-life crisis after every guess 
-* No googling >:( 
+* No googling >:(
+  * Exercise your linguistic intuition! Try coming up with words you haven't thought of before! 
 
 ## Tools used
 * HTML5
