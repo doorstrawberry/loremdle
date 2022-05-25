@@ -164,17 +164,32 @@ function removeLetter() {
 // Compares how similar the given word is to the missing lorem
 function compareWords(word, missingLorem) {
     let remainingLetters = missingLorem
+    let greenList = []
     for (let i = 0; i < 5; i++) {
         if (word[i] === missingLorem[i]) {
             remainingLetters = remainingLetters.replace(word[i], '')
             tilesList[(currentTile - 5) + i].style.background = "green"
+            greenList.push(word[i])
         }
     }
+    for (let g = 0; g < greenList.length; g++){
+        let idName = greenList[g]
+        let temp = document.getElementById(idName)
+        temp.style.background = "green"
+    }
+
+    let yellowList =[]
     for (let j = 0; j < 5; j++) {
         if ((remainingLetters.includes(word[j])) && (word[j] !== missingLorem[j])) {
             remainingLetters = remainingLetters.replace(word[j], '')
             tilesList[(currentTile - 5) + j].style.background = "yellow"
+            yellowList.push(word[j])
         }
+    }
+    for (let y = 0; y < yellowList.length; y++){
+        let idName = yellowList[y]
+        let temp = document.getElementById(idName)
+        temp.style.background = "yellow"
     }
 }
 
