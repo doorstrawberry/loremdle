@@ -47,12 +47,24 @@ let guessesList = []
 let guess = ''
 
 // -----------------------------
+// Handles every keys pressed on webkeyboard
+// -----------------------------
+let keyboardTiles = document.querySelectorAll('button')
+for (let i = 0; i < keyboardTiles.length; i++) {
+    keyboardTiles[i].addEventListener('click', (e) => {
+        let pressed = e.target.innerText
+        main(pressed)
+    })
+}
+// -----------------------------
 // Handles every keys pressed
 // -----------------------------
-document.addEventListener('keydown', handleKeyPress)
+document.addEventListener('keydown', (e) => {
+    let pressed = String(e.key)
+    main(pressed)
+})
 
-function handleKeyPress(e) {
-    let keyPressed = String(e.key)
+function main(keyPressed) {
     if (keyPressed === "Enter") {
         if (lettersLeft === 0) {
             if (validWordHuh(guess)) {
@@ -60,10 +72,17 @@ function handleKeyPress(e) {
                     for (let i = 0; i < 5; i++) {
                         tilesList[(currentTile - 5) + i].style.background = "green"
                     }
-                    for (let j = 0; j < tilesList.length; j++){
+                    for (let j = 0; j < tilesList.length; j++) {
                         tilesList[j].style.opacity = "50%"
                     }
-                    document.removeEventListener('keydown', handleKeyPress)
+                    document.removeEventListener('keydown', main)
+                    let keyboardTiles = document.querySelectorAll('button')
+                    for (let i = 0; i < keyboardTiles.length; i++) {
+                        keyboardTiles[i].removeEventListener('click', (e) => {
+                            let pressed = e.target.innerText
+                            main(pressed)
+                        })
+                    }
                     displayWinMessage()
                 }
                 else {
@@ -75,7 +94,7 @@ function handleKeyPress(e) {
                     guess = ''
                     guessOn += 1
                     lettersLeft = 5
-                    if (guessOn === 7){
+                    if (guessOn === 7) {
                         displayLostMessage()
                     }
                 }
@@ -130,14 +149,14 @@ function removeLetter() {
 // Compares how similar the given word is to the missing lorem
 function compareWords(word, missingLorem) {
     let remainingLetters = missingLorem
-    for (let i = 0; i < 5; i++){
+    for (let i = 0; i < 5; i++) {
         if (word[i] === missingLorem[i]) {
             remainingLetters = remainingLetters.replace(word[i], '')
             tilesList[(currentTile - 5) + i].style.background = "green"
         }
     }
-    for (let j = 0; j < 5; j++){
-        if ((remainingLetters.includes(word[j])) && (word[j] !== missingLorem[j])){
+    for (let j = 0; j < 5; j++) {
+        if ((remainingLetters.includes(word[j])) && (word[j] !== missingLorem[j])) {
             remainingLetters = remainingLetters.replace(word[j], '')
             tilesList[(currentTile - 5) + j].style.background = "yellow"
         }
@@ -192,32 +211,32 @@ function removeNotValid() {
 }
 
 // Displays a winning message
-function displayWinMessage(){
+function displayWinMessage() {
     let w = document.createElement("div")
     w.classList.add('win-message')
-    if (guessOn === 1){
+    if (guessOn === 1) {
         w.innerText = `Lorem Einstein!`
     }
-    else if (guessOn === 2){
+    else if (guessOn === 2) {
         w.innerText = `Genius!`
     }
-    else if (guessOn === 3){
+    else if (guessOn === 3) {
         w.innerText = `Impressive!`
     }
-    else if (guessOn === 4){
+    else if (guessOn === 4) {
         w.innerText = `Not too bad!`
     }
-    else if (guessOn === 5){
+    else if (guessOn === 5) {
         w.innerText = `Yessz!`
     }
-    else if (guessOn === 6){
+    else if (guessOn === 6) {
         w.innerText = `Phew~ you got it`
     }
     document.querySelector('body').appendChild(w)
 }
 
 // Displays a loss message
-function displayLostMessage(){
+function displayLostMessage() {
     let w = document.createElement("div")
     w.classList.add('lost-message')
     w.innerText = `Better luck next time! The word was "${missingLorem}"`
