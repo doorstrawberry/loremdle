@@ -269,8 +269,8 @@ function displayWinMessage() {
 function displayLostMessage() {
     let w = document.createElement("div")
     w.classList.add('lost-message')
-    w.innerText = `Better luck next time! The word was "${missingLorem}"`
-    document.querySelector('body').appendChild(w)
+    w.innerText = `Nice try! The word was "${missingLorem}"`
+    document.getElementById('gameboard').appendChild(w)
 }
 
 // Displays a "Not enough letters" message
