@@ -18,7 +18,8 @@
 * A mind-bending and life-changing experience enough to start a mid-life crisis after every guess 
 * No googling >:(
   * Exercise your linguistic intuition! Try coming up with words you haven't thought of before! You get better the more you practice!
-  * If you're actually that stuck on coming up with words just find a lorem ipsum generator and input any 5 letter word you find there. 
+  * If you're actually that stuck on coming up with words just find a lorem ipsum generator and input any 5 letter word you find there.
+* Have fun! Yay! 
 
 ## Tools used
 * HTML5
