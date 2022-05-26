@@ -123,7 +123,6 @@ body {
     font-size: 10pt;
 }
 
-
 /* Keyboard Styles */
 .keyboard {
     display: flex;
@@ -140,3 +139,10 @@ body {
 .keyboard-row button {
     padding: 15px;
 }
+
+/* For Mobile Phones */
+@media screen and (max-width: 900px) {
+    .keyboard-row button {
+        padding: 7px;
+    }
+  }
